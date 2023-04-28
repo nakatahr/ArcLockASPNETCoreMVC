@@ -18,4 +18,5 @@ SwitchBot is basically controlled by iOS and Android app, and they work perfectl
 # Add AzureAD authentication
 ASP.NET Core provides the way to integrate AzureAD to a web application that enables users to sign in using OAuth 2.0 with credentials from Azure Active Directory. Please check [Azure Active Directory with ASP.NET Core](https://learn.microsoft.com/ja-jp/aspnet/core/security/authentication/azure-active-directory/?view=aspnetcore-7.0) to learn more. Using AzureAD for authentication method and by adding [Authorize] prefix to controller of pages you want to control, those who in an organization can access to the company web page for office unlock. 
 
+<kbd><img src="https://user-images.githubusercontent.com/24380329/235066801-02f558d6-34ae-43df-aff3-f5f426573cbb.png" width="200"></kbd>
 <kbd><img src="https://user-images.githubusercontent.com/24380329/235062515-bec1b0a7-a062-4903-87aa-2cc4fb5c4315.png" width="200"></kbd>
