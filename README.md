@@ -12,3 +12,7 @@ First check the demo shown below that tells what the web app does.
 
 # Problem to be solved
 SwitchBot is basically controlled by iOS and Android app, and they work perfectly in most of the cases. However, as the product is mainly targeted for home use, sharing devices with a large number of people is not considered well. As there is a feature called "Home Sharing" in SwitchBot, you can easily invite members you want to grant access to a device like SwitchBot Lock. But if you are going to use in SOHO or small enterprise like 10-50 people, it is time-consuming for both administrator and user to insall dedicated app just only to unlock a door.
+
+<kbd><img src="https://user-images.githubusercontent.com/24380329/235060967-609ee05b-7862-40d1-bb44-12534f61e0fa.jpg" width="200"></kbd>
+
+# 
