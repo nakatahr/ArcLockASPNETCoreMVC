@@ -1,0 +1,106 @@
+﻿@{
+    TempData["Title"] = "Contoso Office";
+}
+
+<div class="text-center">
+    <p class="h6 text-muted">Contoso Office</p>
+
+    @if (@TempData["lockState"].ToString() == "locked" && @TempData["doorState"].ToString() == "closed")
+    {
+        <p class="h1"><i class="fas fa-door-closed mx-1"></i><i class="fas fa-lock"></i></p>
+        <p class="h6 text-muted">Locked</p>
+    }
+    else if (@TempData["lockState"].ToString() == "unlocked" && @TempData["doorState"].ToString() == "closed")
+    {
+        <p class="h1"><i class="fas fa-door-closed mx-1"></i><i class="fas fa-unlock"></i></p>
+        <p class="h6 text-muted">The lock is unlocked</p>
+    }
+    else if (@TempData["lockState"].ToString() == "locked" && @TempData["doorState"].ToString() == "opened")
+    {
+        <p class="h1"><i class="fas fa-door-open mx-1"></i><i class="fas fa-lock"></i></p>
+        <p class="h6 text-muted">The door is opened</p>
+    }
+    else if (@TempData["lockState"].ToString() == "unlocked" && @TempData["doorState"].ToString() == "opened")
+    {
+        <p class="h1"><i class="fas fa-door-open mx-1"></i><i class="fas fa-unlock"></i></p>
+        <p class="h6 text-muted">Opened</p>
+    }
+    else
+    {
+        <p class="h1"><i class="fas fa-triangle-exclamation mx-1"></i><i class="fas fa-triangle-exclamation"></i></p>
+        <p class="h6 text-muted">No connection</p>
+    }
+
+    <p class="h3">
+        <a asp-area="" asp-controller="Home" asp-action="Index" onclick="beginRefresh()">
+            <i id="refreshIcon" class="fas fa-refresh text-dark"></i>
+        </a>
+    </p>
+
+    <p class="mt-5"></p>
+    <a class="circle" asp-area="" asp-controller="Home" asp-action="LockUnlock" onclick="beginLockUnlock()">
+        <label>
+            <i id="keyIcon" class="fas fa-key text-dark display-1 mt-6"></i>
+        </label>
+    </a>
+
+    <p class="h3">
+        <span id="staticMessage">
+        @if (@TempData["lockState"].ToString() == "locked")
+        {
+            <span>Unlock</span>
+        }
+        else
+        {
+            <span>Lock</span>
+        }
+        </span>
+
+        <span id="workingMessage">
+        @if (@TempData["lockState"].ToString() == "locked")
+        {
+            <span>Unlocking</span>
+        }
+        else
+        {
+            <span>Locking</span>
+        }
+        </span>
+    </p>
+
+    <p class="h6 text-muted mt-5">
+    @if (@TempData["lockState"].ToString() == "locked")
+    {
+        <span>The door locks automatically<br>Always bring your smartphone with you</span>
+    }
+    else
+    {
+        <span>The door locks automatically<br>Lock manually when it does not work</span>            
+    }
+    </p>
+</div>
+
+@section scripts{
+<script>
+    $(function () {
+        $("#refreshIcon").removeClass("faa-spin animated");
+        $("#keyIcon").removeClass("fa-circle-notch faa-spin faa-slow animated");
+        $("#keyIcon").addClass("fa-key");
+        $(".circle").css("pointer-events", "auto");
+        $("#staticMessage").show();
+        $("#workingMessage").hide();
+    });
+
+    function beginRefresh() {
+        $("#refreshIcon").addClass("faa-spin animated");
+    }
+
+    function beginLockUnlock() {
+        $("#keyIcon").removeClass("fa-key");
+        $("#keyIcon").addClass("fa-circle-notch faa-spin faa-slow animated");
+        $(".circle").css("pointer-events", "none");
+        $("#workingMessage").show();
+        $("#staticMessage").hide();
+    }
+</script>
+}

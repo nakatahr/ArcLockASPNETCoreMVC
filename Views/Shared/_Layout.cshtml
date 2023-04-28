@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/fontawesome.css" />
+    <link rel="stylesheet" href="~/css/font-awesome-animation.css" />
+    <link rel="stylesheet" href="~/css/solid.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/favicon.ico" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <img src="~/img/logo.png" width="30"/>
+            </div>
+            <ul class="nav navbar-nav h5">
+                <li>
+                    <a class="nav-link" href="#"><i class="fas fa-question-circle text-muted mx-1"></i></a>
+                </li>
+                <li class="nav-link" data-toggle="tooltip" data-placement="bottom" title="@TempData["battery"]%">
+                @if (Convert.ToInt32(@TempData["battery"]) > 80)
+                {
+                    <i class="fas fa-battery-full text-muted mx-1"></i>
+                }
+                else if (Convert.ToInt32(@TempData["battery"]) > 75)
+                {
+                    <i class="fas fa-battery-three-quarters text-muted mx-1"></i>                                    
+                }
+                else if (Convert.ToInt32(@TempData["battery"]) > 50)
+                {
+                    <i class="fas fa-battery-half text-muted mx-1"></i>                                    
+                }
+                else if (Convert.ToInt32(@TempData["battery"]) > 25)
+                {
+                    <i class="fas fa-battery-quarter text-muted mx-1"></i>                                    
+                }
+                else
+                {
+                    <i class="fas fa-battery-empty text-muted mx-1"></i>                                    
+                }
+                </li>
+                <li class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownMenuLink" role="button" 
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle text-muted"></i>
+                    </span>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-item" style="line-height: 50%">
+                            <span class="navbar-text text-muted">@User.Identity.Name Hiroaki Nakata</span><br />
+                            <a class="navbar-text text-primary font-weight-bold small" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">サインアウト</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+
+    <div class="d-flex align-items-center justify-content-center" style="height: 80vh">
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="ml-3">
+            &copy; 2023 - ArcHundred
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
